@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>iBuildWeb</title>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="js/editableList.js"></script>
+</head>
+<body ng-controller="mainCtrl">
+<ul>
+    <li ng-repeat="n in list">{{n.name}} <input type="button" value="edit" ng-click="doEdit(n)"/></li>
+</ul>
+
+<div ng-show="editObj">name:
+    <input type="text" name="" id="" ng-model="editObj.name"/>
+
+    <input type="button" value="done" ng-click="doneEdit()"/>
+    <input type="button" value="cancel" ng-click="cancelEdit()"/>
+
+</div>
+<input type="button" value="freshData" ng-click="getList()"/>
+
+</body>
+</html>
