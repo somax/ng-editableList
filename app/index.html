@@ -5,30 +5,50 @@
     <title>editableList demo</title>
     <script src="bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="js/editableList.js"></script>
+
+    <style>
+        li{
+            line-height: 25px;
+        }
+        input[type=text] {
+            border: 1px solid #eee;
+        }
+
+        [required] {
+            border-bottom: 1px solid red !important;
+        }
+
+        input.ng-dirty.ng-invalid.ng-invalid-required {
+            border-color: red;
+        }
+    </style>
 </head>
 <body ng-controller="mainCtrl">
+<input type="button" value="Get List" ng-click="getList()"/>
+
 <ul>
-    <li ng-repeat="l in list">{{l.name}}:{{l.Country | showCountryName}}({{l.Country}}) <input type="button" value="edit" ng-click="doEdit(l)"/></li>
+    <li ng-repeat="l in list" ng-mouseover="showEditBtn = true" ng-mouseleave="showEditBtn = false">
+        {{l.name}}: {{l.Country | showCountryName}}({{l.Country}})
+        <input type="button" value="edit" ng-click="doEdit(l)" ng-show="!editObj && showEditBtn"/>
+    </li>
 </ul>
 
-<div ng-show="editObj">name:
-    <input type="text" name="" id="" ng-model="editObj.name"/>
+<div ng-show="editObj">
+
+    <form name="editForm" role="form" novalidate>
+        name:
+        <input type="text" name="" id="" ng-model="editObj.name" required/>
 
 
+        <select style="width: 195px; margin: 0 0 0 0; padding: 7px 7px 6px; font-size: 11px;" ng-model="editObj.Country"
+                ng-options="m.Country as m.CountryName for m in CountryList">
+            <option value="0">请选择</option>
+        </select>
 
-    <select style="width: 195px; margin: 0 0 0 0; padding: 7px 7px 6px; font-size: 11px;" ng-model="editObj.Country"
-            ng-options="m.Country as m.CountryName for m in CountryList">
-        <option value="0">请选择</option>
-    </select>
-
-    <input type="button" value="done" ng-click="doneEdit()"/>
-    <input type="button" value="cancel" ng-click="cancelEdit()"/>
-
+        <input type="submit" value="done" ng-click="doneEdit()" ng-disabled="editForm.$invalid"/>
+        <input type="button" value="cancel" ng-click="cancelEdit()"/>
+    </form>
 </div>
-<input type="button" value="freshData" ng-click="getList()"/>
-
-
-
 
 
 </body>
