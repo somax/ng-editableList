@@ -51,6 +51,19 @@ angular.module('app', [])
 			return _out;
 		}
 	})
+	//
+	.filter('myFilter', function () {
+		return function (_in,_p,_c) {
+			console.log('myFilter:',_in,_p,_c) ;
+			var _out=[];
+			for(var i=0;i<_in.length;i++){
+				if(_in[i].name=='AAA'){
+					_out.push(_in[i])
+				}
+			}
+			return _out;
+		}
+	})
 	.controller('mainCtrl', function ($scope, List, CountryList) {
 		$scope.CountryList = CountryList;
 		$scope.editObj = null;
@@ -103,6 +116,12 @@ angular.module('app', [])
 		getList();
 
 
+		
+		$scope.myfilter = function(_in,_param){
+			console.log('myfilter::',_in,_param);
+			var _re = new RegExp('AAA|BBB|CCC','gi')
+			return _in.name.search(_re)>-1;
+		}
 
 	}
 );

@@ -21,13 +21,19 @@
         input.ng-dirty.ng-invalid.ng-invalid-required {
             border-color: red;
         }
+
+
+        input.ng-dirty.ng-valid.ng-valid-required {
+            border-bottom: 1px solid limegreen !important;
+        }
     </style>
 </head>
 <body ng-controller="mainCtrl">
-<input type="button" value="Get List" ng-click="getList()"/>
+<input type="button" value="Get List" ng-click="getList()" ng-hide="editObj"/>
 
 <ul>
-    <li ng-repeat="l in list" ng-mouseover="showEditBtn = true" ng-mouseleave="showEditBtn = false">
+    <li ng-repeat="l in list | filter:myfilter" ng-mouseover="showEditBtn = true" ng-mouseleave="showEditBtn = false">
+    <!--<li ng-repeat="l in list | myFilter" ng-mouseover="showEditBtn = true" ng-mouseleave="showEditBtn = false">-->
         {{l.name}}: {{l.Country | showCountryName}}({{l.Country}})
         <input type="button" value="edit" ng-click="doEdit(l)" ng-show="!editObj && showEditBtn"/>
     </li>
