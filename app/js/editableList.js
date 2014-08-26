@@ -1,7 +1,7 @@
 angular.module('app', [])
 	.factory('List', function ($http) {
 		var list = {
-			updateUrl: '/',
+			updateUrl: 'data/update.json',
 			dataUrl: 'data/list.json',
 			data: [],
 			get: function (_params) {
@@ -54,7 +54,7 @@ angular.module('app', [])
 	//自定义过滤器
 	.filter('myFilter', function () {
 		return function (_in,_p,_c) {
-			console.log('myFilter:',_in,_p,_c) ;
+			// console.log('myFilter:',_in,_p,_c) ;
 			var _out=[];
 			for(var i=0;i<_in.length;i++){
 				if(_in[i].name=='AAA'){
@@ -119,8 +119,8 @@ angular.module('app', [])
 
 
 		//提供内置过滤器filter的自定义过滤条件
-		$scope.myfilter = function(_in,_param){
-			console.log('myfilter::',_in,_param);
+		$scope.myfilter = function(_in){
+			// console.log('myfilter::',_in);
 			var _re = new RegExp($scope.filterWords,'gi')
 			// return _in.name.search(_re)>-1;
 			return _re.test(_in.name);
