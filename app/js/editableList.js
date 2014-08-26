@@ -51,7 +51,7 @@ angular.module('app', [])
 			return _out;
 		}
 	})
-	//
+	//自定义过滤器
 	.filter('myFilter', function () {
 		return function (_in,_p,_c) {
 			console.log('myFilter:',_in,_p,_c) ;
@@ -67,7 +67,9 @@ angular.module('app', [])
 	.controller('mainCtrl', function ($scope, List, CountryList) {
 		$scope.CountryList = CountryList;
 		$scope.editObj = null;
+		$scope.filterWords = 'AAA|BBB|CCC';
 		var currentObj = null;
+
 
 		var getList = $scope.getList = function () {
 			var params = {pageSize: 20, pageIndex: 2};
@@ -116,10 +118,10 @@ angular.module('app', [])
 		getList();
 
 
-		
+		//提供内置过滤器filter的自定义过滤条件
 		$scope.myfilter = function(_in,_param){
 			console.log('myfilter::',_in,_param);
-			var _re = new RegExp('AAA|BBB|CCC','gi')
+			var _re = new RegExp($scope.filterWords,'gi')
 			return _in.name.search(_re)>-1;
 		}
 

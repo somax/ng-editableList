@@ -30,9 +30,10 @@
 </head>
 <body ng-controller="mainCtrl">
 <input type="button" value="Get List" ng-click="getList()" ng-hide="editObj"/>
-
+filter:<input type="text" ng-model="filterWords"> length:{{f.length}}/{{list.length}}
 <ul>
-    <li ng-repeat="l in list | filter:myfilter" ng-mouseover="showEditBtn = true" ng-mouseleave="showEditBtn = false">
+
+    <li ng-repeat="l in f = (list | filter:myfilter)" ng-mouseover="showEditBtn = true" ng-mouseleave="showEditBtn = false">
     <!--<li ng-repeat="l in list | myFilter" ng-mouseover="showEditBtn = true" ng-mouseleave="showEditBtn = false">-->
         {{l.name}}: {{l.Country | showCountryName}}({{l.Country}})
         <input type="button" value="edit" ng-click="doEdit(l)" ng-show="!editObj && showEditBtn"/>
