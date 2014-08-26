@@ -1,7 +1,7 @@
 angular.module('app', [])
 	.factory('List', function ($http) {
 		var list = {
-			updateUrl: 'data/update.php',
+			updateUrl: 'data/update.json',
 			dataUrl: 'data/list.json',
 			data: [],
 			get: function (_params) {
