@@ -122,7 +122,8 @@ angular.module('app', [])
 		$scope.myfilter = function(_in,_param){
 			console.log('myfilter::',_in,_param);
 			var _re = new RegExp($scope.filterWords,'gi')
-			return _in.name.search(_re)>-1;
+			// return _in.name.search(_re)>-1;
+			return _re.test(_in.name);
 		}
 
 	}
