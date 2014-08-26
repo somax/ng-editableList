@@ -10,7 +10,8 @@ angular.module('app', [])
 				});
 			},
 			update: function (_data) {
-				return $http.post(this.updateUrl, _data)
+				// return $http.post(this.updateUrl, _data)
+				return $http.get(this.updateUrl, _data);
 			}
 		};
 
