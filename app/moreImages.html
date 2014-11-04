@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>editableList demo</title>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="js/moreImages.js"></script>
+
+    <style>
+        li{
+            line-height: 25px;
+        }
+        img{
+            height: 100px;
+            widows: 100px;
+        }
+    </style>
+</head>
+<body ng-controller="moreImageCtrl">
+
+<ul>
+    <li ng-repeat="d in data" images="d.images" limit="4" step="3"></li>
+</ul>
+
+
+
+
+
+</body>
+</html>
