@@ -19,7 +19,10 @@
 <body ng-controller="moreImageCtrl">
 
 <ul>
-    <li ng-repeat="d in data" images="d.images" limit="4" step="3"></li>
+    <li ng-repeat="d in data">
+        <h2>{{d.disc}}</h2>
+        <div images="d.images" limit="4" step="3"></div>
+    </li>
 </ul>
 
 

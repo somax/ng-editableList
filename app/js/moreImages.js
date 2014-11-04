@@ -7,7 +7,7 @@ angular.module('app', [])
 			limit:'=',
 			step:'='
 		},
-		template:'<img ng-repeat="img in images | limitTo:_limit" src="{{img.url}}" title="{{img.title}}"><a ng-hide="noMore" href="" ng-click="showMore()">showMore...</a>',
+		template:'<img ng-repeat="img in images | limitTo:_limit" src="{{img.url}}" title="{{img.title}}"><button ng-hide="noMore" ng-click="showMore()">showMore...</button>',
 		link:function (scope,element,attrs) {
 			scope.noMore = false;
 			scope._limit = scope.limit || 6;
