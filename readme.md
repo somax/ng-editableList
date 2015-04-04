@@ -1,4 +1,4 @@
 ng editable list demo
 =====================
 
-this is a demo for my firend who learning angularjs!
+This is a demo to my friends who are learning angularjs!
